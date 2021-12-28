@@ -9,19 +9,24 @@ const parseExerciseArguments = (args: Array<string>): ExerciseArgs => {
 	}
 
 	const [, , target, ...hours] = args;
+	const numberTarget: number = Number(target);
 
-	if (isNaN(Number(target))) {
+	if (isNaN(numberTarget)) {
 		throw new Error('Target is not a numbers.');
 	}
 
-	const doesHoursHaveNaN: boolean = hours.some((hour) => isNaN(Number(hour)));
+	const numberHours: Array<number> = hours.map((hour) => Number(hour));
+	const doesHoursHaveNaN: boolean = numberHours.some((numberHour) =>
+		isNaN(numberHour)
+	);
+
 	if (doesHoursHaveNaN) {
 		throw new Error('Hours contains a value that is not a number.');
 	}
 
 	return {
-		hours: hours.map((hour) => Number(hour)),
-		target: Number(target),
+		hours: numberHours,
+		target: numberTarget,
 	};
 };
 
