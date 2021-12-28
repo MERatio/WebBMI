@@ -10,14 +10,14 @@ const parseBmiArguments = (args: Array<string>): BmiArgs => {
 		throw new Error('Too many arguments.');
 	}
 
-	if (!isNaN(Number(args[2])) && !isNaN(Number(args[3]))) {
-		return {
-			heightCm: Number(args[2]),
-			weightKg: Number(args[3]),
-		};
-	} else {
+	if (isNaN(Number(args[2])) || isNaN(Number(args[3]))) {
 		throw new Error('Arguments are not numbers.');
 	}
+
+	return {
+		heightCm: Number(args[2]),
+		weightKg: Number(args[3]),
+	};
 };
 
 const calculateBmi = (heightCm: number, weightKg: number): string => {
