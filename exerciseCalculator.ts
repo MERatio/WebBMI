@@ -11,8 +11,14 @@ const parseExerciseArguments = (args: Array<string>): ExerciseArgs => {
 	const [, , target, ...hours] = args;
 	const numberTarget: number = Number(target);
 
-	if (isNaN(numberTarget)) {
-		throw new Error('Target is not a numbers.');
+	if (target === '' || isNaN(numberTarget)) {
+		throw new Error('Target is not a number.');
+	}
+
+	const doesHoursHaveEmptyString: boolean = hours.some((hour) => hour === '');
+
+	if (doesHoursHaveEmptyString) {
+		throw new Error('Hours contains a value that is not a number.');
 	}
 
 	const numberHours: Array<number> = hours.map((hour) => Number(hour));
