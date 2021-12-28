@@ -35,13 +35,17 @@ const calculateBmi = (heightCm: number, weightKg: number): string => {
 	}
 };
 
-try {
-	const { heightCm, weightKg } = parseBmiArguments(process.argv);
-	console.log(calculateBmi(heightCm, weightKg));
-} catch (error: unknown) {
-	let errorMessage: string = 'Something went wrong.';
-	if (error instanceof Error) {
-		errorMessage += ` Error: ${error.message}`;
+if (process.argv[1].includes('bmiCalculator')) {
+	try {
+		const { heightCm, weightKg } = parseBmiArguments(process.argv);
+		console.log(calculateBmi(heightCm, weightKg));
+	} catch (error: unknown) {
+		let errorMessage: string = 'Something went wrong.';
+		if (error instanceof Error) {
+			errorMessage += ` Error: ${error.message}`;
+		}
+		console.log(errorMessage);
 	}
-	console.log(errorMessage);
 }
+
+export default calculateBmi;
