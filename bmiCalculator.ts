@@ -40,7 +40,7 @@ if (process.argv[1].includes('bmiCalculator')) {
 		const { heightCm, weightKg } = parseBmiArguments(process.argv);
 		console.log(calculateBmi(heightCm, weightKg));
 	} catch (error: unknown) {
-		let errorMessage: string = 'Something went wrong.';
+		let errorMessage = 'Something went wrong.';
 		if (error instanceof Error) {
 			errorMessage += ` Error: ${error.message}`;
 		}

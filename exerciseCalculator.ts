@@ -9,7 +9,7 @@ const parseExerciseArguments = (args: Array<string>): ExerciseArgs => {
 	}
 
 	const [, , target, ...hours] = args;
-	const numberTarget: number = Number(target);
+	const numberTarget = Number(target);
 
 	if (target === '' || isNaN(numberTarget)) {
 		throw new Error('Target is not a number.');
@@ -105,7 +105,7 @@ try {
 	const { hours, target } = parseExerciseArguments(process.argv);
 	console.log(calculateExercises(hours, target));
 } catch (error: unknown) {
-	let errorMessage: string = 'Something went wrong.';
+	let errorMessage = 'Something went wrong.';
 	if (error instanceof Error) {
 		errorMessage += ` Error: ${error.message}`;
 	}
