@@ -69,7 +69,7 @@ const calculateRating = (
 	} else {
 		return {
 			rating: 1,
-			ratingDescription: ':(',
+			ratingDescription: 'bad',
 		};
 	}
 };
