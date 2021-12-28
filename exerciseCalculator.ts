@@ -101,13 +101,17 @@ const calculateExercises = (
 	};
 };
 
-try {
-	const { hours, target } = parseExerciseArguments(process.argv);
-	console.log(calculateExercises(hours, target));
-} catch (error: unknown) {
-	let errorMessage = 'Something went wrong.';
-	if (error instanceof Error) {
-		errorMessage += ` Error: ${error.message}`;
+if (process.argv[1].includes('exerciseCalculator')) {
+	try {
+		const { hours, target } = parseExerciseArguments(process.argv);
+		console.log(calculateExercises(hours, target));
+	} catch (error: unknown) {
+		let errorMessage = 'Something went wrong.';
+		if (error instanceof Error) {
+			errorMessage += ` Error: ${error.message}`;
+		}
+		console.log(errorMessage);
 	}
-	console.log(errorMessage);
 }
+
+export default calculateExercises;
