@@ -8,9 +8,9 @@ const parseBmiArguments = (args: Array<string>): BmiArgs => {
 		throw new Error('Not enough arguments.');
 	} else if (args.length > 4) {
 		throw new Error('Too many arguments.');
-	}
-
-	if (isNaN(Number(args[2])) || isNaN(Number(args[3]))) {
+	} else if (args[2] === '' || args[3] === '') {
+		throw new Error('Arguments are not numbers.');
+	} else if (isNaN(Number(args[2])) || isNaN(Number(args[3]))) {
 		throw new Error('Arguments are not numbers.');
 	}
 
